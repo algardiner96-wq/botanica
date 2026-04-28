@@ -15,4 +15,21 @@ class Plant(models.Model):
     def __str__(self):
         return self.name
     
+class Symbolism(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name
+    
+
+class Variant(models.Model):
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE, related_name='variants')
+    name = models.CharField(max_length=100)
+    colour = models.CharField(max_length=50, blank=True)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='variant_images/', blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.plant.name} - {self.name}"
     
