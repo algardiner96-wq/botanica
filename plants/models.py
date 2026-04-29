@@ -2,9 +2,16 @@ from django.db import models
 
 # Create your models here.
 class Plant(models.Model):
+    LIFESPAN_CHOICES = [
+        ('Annual', 'Annual'),
+        ('Perennial', 'Perennial'),
+        ('Biennial', 'Biennial'),
+    ]
+    
     name = models.CharField(max_length=100)
     scientific_name = models.CharField(max_length=100, blank=True, null=True)
     plant_type = models.CharField(max_length=50)
+    lifespan = models.CharField(max_length=20, choices=LIFESPAN_CHOICES, blank=True)
     watering = models.CharField(max_length=50)
     sunlight = models.CharField(max_length=50)
     description = models.TextField(blank=True)
