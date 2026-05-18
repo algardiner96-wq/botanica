@@ -12,6 +12,7 @@ class PlantAdmin(admin.ModelAdmin):
     list_display = ('name', 'scientific_name', 'plant_type', 'watering', 'sunlight')
     search_fields = ('name', 'scientific_name')
     list_filter = ('plant_type', 'watering', 'sunlight')
+    ordering = ('name',)
     inlines = [VariantInline]
 
 
